@@ -2,11 +2,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 95vh;
     width: 95vw;
 }
 
 .wrapper{
     height: 400px;
     width: 400px;
+}
+
+.logIn-header{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 30vh;
 }

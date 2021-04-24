@@ -10,21 +10,30 @@ function App(props) {
     <div className="App">
       <Router>
         <Switch>
-          <Route
-          exact path={'/home'}
-          component={Home}
-          />
-          <Route
-          exact path={'/'}
-          component={Login}
-          />
-           <Route
-          exact path={'/feed'}
-          component={Feed}
-          />
-           <Route
-          exact path={'/post'}
-          component={Post}
+          {/**We can create HOC */}
+            <Route
+              exact path={'/home'}
+              render={
+                ()=>localStorage.getItem("status") === "loggedIn" ? <Home/> : <Login/>
+              }
+            />
+            <Route
+              exact path={'/feed'}
+              render={
+                ()=>localStorage.getItem("status") === "loggedIn" ? <Feed/> : <Login/>
+              }
+            />
+            <Route
+              exact path={'/post'}
+              render={
+                ()=>localStorage.getItem("status") === "loggedIn" ? <Post/> : <Login/>
+              }
+            />
+            <Route
+              exact path={'/'}
+              render={
+                ()=>localStorage.getItem("status") === "loggedIn" ? <Home/> :<Login/>
+              }
           />
         </Switch>
   </Router>

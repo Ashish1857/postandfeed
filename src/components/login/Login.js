@@ -3,7 +3,7 @@ import './Login.css';
 import sha1 from 'sha1'
 import {useSelector, useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import {getUsers,getPosts} from '../../redux/actionCreator'
+import {getUsers,setCurrrentLoggedInUser} from '../../redux/actionCreator'
 
 const Login=()=>{
     const [phone, setPhone] = useState('');
@@ -17,7 +17,9 @@ const Login=()=>{
         const hashPasword = sha1(password);
         const isValidUser = users.find(x=> x.password === hashPasword && x.phone === phone);
         if(isValidUser){
+            localStorage.setItem("status","loggedIn")
             history.push('/home')
+            dispatch(setCurrrentLoggedInUser(isValidUser))
         }
     }
 
@@ -26,6 +28,8 @@ const Login=()=>{
     },[])
 
     return(
+        <>
+        <div className="logIn-header"> <h1>Login</h1></div>
         <div className="login">
             <form onSubmit={validateLogin}>
                 <div className="form-group">
@@ -49,6 +53,7 @@ const Login=()=>{
                 <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
         </div>
+        </>
     )
 }
 

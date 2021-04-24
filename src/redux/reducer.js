@@ -1,4 +1,4 @@
-import {GET_ALL_USERS,GET_POSTS} from './actionType'
+import {GET_ALL_USERS,GET_POSTS, SET_LOGIN_USER} from './actionType'
 
 const initialState={
     users:[],
@@ -15,6 +15,9 @@ const reducer = (state = {...initialState}, action)=>{
 
         case GET_POSTS:
             return {...state, posts: action.payload}
+        
+        case SET_LOGIN_USER:
+            return {...state, loggedInUser: action.payload}
 
         default:
             return {...state}
