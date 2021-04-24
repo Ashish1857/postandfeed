@@ -16,12 +16,38 @@ const useStyles = makeStyles((theme) => ({
       margin: `${theme.spacing(1)}px auto`,
       padding: theme.spacing(2),
     },
+    ellipsis:{
+        maxWidth: "18rem",
+        overflow: "hidden",
+        position: "relative",
+        lineHeight: "1.2em",
+        maxHeight: "2.4em",
+        textAlign: "justify",
+        marginRight: "-1em",
+        paddingRight: "1em",
+        marginBottom: "0.5em",
+        "&:before": {
+        content: '"..."',
+        position: "absolute",
+        right: 0,
+        bottom: 0
+        },
+        "&:after": {
+        content: '""',
+        position: "absolute",
+        right: 0,
+        width: "1em",
+        height: "1em",
+        marginTop: "0.2em",
+        background: "white"
+        }
+    }
   }));
 
 const Card =({id,title, ownerName,comments, subject})=>{
     const classes = useStyles();
     return(
-        <div className ="post-card">
+        <div className ="post-card" key={id}>
             <Paper className={classes.paper}>
             <Grid container wrap="nowrap" spacing={2}>
                 <Grid item>
@@ -29,7 +55,7 @@ const Card =({id,title, ownerName,comments, subject})=>{
                 </Grid>
                 <Grid item xs>
                     <Typography variant="h5">{ownerName}</Typography>
-                    <Typography>{subject}</Typography><br/>
+                    <Typography classes={{root:classes.ellipsis}}><span>{subject}</span></Typography><br/>
                     <p>Comments: {comments? comments.length:0}</p>
                 </Grid>
             </Grid>

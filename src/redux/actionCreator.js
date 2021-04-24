@@ -16,6 +16,4 @@ export const getPosts=()=>
         })
     });
 
-export const setCurrrentLoggedInUser=(payload)=>{
-    return {type: SET_LOGIN_USER, payload: payload}
-}
+export const setCurrrentLoggedInUser=(payload)=> ({type: SET_LOGIN_USER, payload: payload})

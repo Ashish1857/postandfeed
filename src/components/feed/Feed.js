@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPosts } from '../../redux/actionCreator';
 import Card from '../Card';
 import Navigation from '../navigation';
 import '../post/Post.css';
+import PostDetails from '../PostDetails';
 
 const Feed=()=>{
     const dispatch = useDispatch();
     const posts = useSelector(state=> state.posts);
-    const currentUser = useSelector(state=> state.loggedInUser)
+    const currentUser = useSelector(state=> state.loggedInUser);
+    const [showDetail, setShowDetail] = useState(false);
+    const [post, setPost] = useState({});
 
     useEffect(()=>dispatch(getPosts()),[])
     return (
@@ -16,10 +19,32 @@ const Feed=()=>{
             <Navigation/>
             <div className="postContainer">
                 {
-                    posts.map(post=>
-                        post.ownerId !== currentUser.id && <Card comments={post.comments} id={post.id} title={post.title} ownerName={post.ownerName} subject={post.subject}/>
-                    )
+                    !showDetail? posts.map(post=>
+                        post.ownerId !== currentUser.id && 
+                        <div 
+                        className="cardWrapper" 
+                        onClick={()=>{
+                            setShowDetail(true);
+                            setPost(post);
+                        }}>
+                            <Card 
+                                comments={post.comments} 
+                                id={post.id} 
+                                title={post.title} 
+                                ownerName={post.ownerName} 
+                                subject={post.subject}
+                            />
+                        </div>
+                    ):
+                    <PostDetails  
+                        comments={post.comments} 
+                        id={post.id} 
+                        title={post.title} 
+                        ownerName={post.ownerName} 
+                        subject={post.subject}
+                     />
                 }
+                
             </div>
 
         </div>
