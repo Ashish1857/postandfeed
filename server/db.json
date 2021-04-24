@@ -1,0 +1,60 @@
+{
+    "users":[
+        {
+            "id": "USER_001",
+            "name": "Steve",
+            "phone": "7259218955",
+            "password": "7c4a8d09ca3762af61e59520943dc26494f8941b" 
+        },
+        {
+            "id": "USER_002",
+            "name": "Joseph",
+            "phone": "7259218955",
+            "password": "7c4a8d09ca3762af61e59520943dc26494f8941b" 
+        },
+        {
+            "id": "USER_003",
+            "name": "Mark",
+            "phone": "7259218955",
+            "password": "7c4a8d09ca3762af61e59520943dc26494f8941b" 
+        },
+        {
+            "id": "USER_004",
+            "name": "Bill",
+            "phone": "7259218955",
+            "password": "7c4a8d09ca3762af61e59520943dc26494f8941b" 
+        },
+        {
+            "id": "USER_005",
+            "name": "Colin",
+            "phone": "7259218955",
+            "password": "7c4a8d09ca3762af61e59520943dc26494f8941b" 
+        }
+    ],
+    "Posts":[
+        {
+            "id":"001",
+            "ownerId":"USER_002",
+            "ownerName":"Joseph",
+            "title":"React Library",
+            "subject":"The react library is awesome for single page application development",
+            "comments":[
+                {
+                    
+                }
+            ]
+        },
+        {
+            "id":"002",
+            "ownerId":"USER_003",
+            "ownerName":"Mark",
+            "title":"Semantic UI",
+            "subject":"The semantic UI library is awesome for single page application development",
+            "comments":[
+                {
+                    
+                }
+            ]
+        }
+    ]
+}
